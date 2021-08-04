@@ -116,7 +116,7 @@ body {
 }
 
 #penguin7:hover {
-    background-image:url('/images/mound_7_hover.png');
+    background-image:url('../images/mound_7_hover.png');
     cursor: pointer;
 }
 #penguin7:active {

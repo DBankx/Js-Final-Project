@@ -9,7 +9,6 @@ var tadaAudio = new Audio('../audio/tada.mp3');
 var yetiPosition = Math.floor((Math.random() * 9) + 1);
 
 $(document).ready(function () {
-
     var score = 0;
     var highScore = 0;
 
@@ -28,16 +27,36 @@ $(".Peng").on('click', function (event) {
 
 // what happens when a tile is clicked
 function setGame(pen) {
+    // get the id of the penguin
     var num = pen.attr('id');
+
+    // get the number of the penguin id
     var Char = num.substr(num.length - 1);
+
     // if the tile has the yeti monster stop the game
     if (pen.hasClass("Peng yeti")){
+
+        // play the bomb audio to indicate loss
         bombAudio.play();
+
+        // show the yeti image on picked tile
         pen.css('background-image', 'url(images/yeti.png)');
+
+        // alert the user that yeti was clicked
         alert("Yaaaarrrr ! Its Yeti");
-        highScore = score;
+
+        // if score is greater than high score change the high score
+        if(score > highScore) {
+            highScore = score;
+        }
+
+        // display new score data
         $("#score").html('Score: '+score+'<br> High Score : '+ highScore);
+
+        // inform user game is over
         alert("Game Over. Want to Play Next Game Click Ok.");
+
+        // restart game
         restartGame();
     }
     else
@@ -78,7 +97,7 @@ function restartGame(){
 
     }
 
-    // change yeti position
+    // change yeti position to new randomized position
     yetiPosition = Math.floor((Math.random() * 9) + 1);
 
     // randomize yeti
